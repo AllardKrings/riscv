@@ -1,28 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  creationTimestamp: "2024-07-09T12:28:11Z"
-  generateName: input-artifact-git-
-  generation: 10
   labels:
     workflows.argoproj.io/creator: system-serviceaccount-argo-argo-server
-  managedFields:
-  - apiVersion: argoproj.io/v1alpha1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:generateName: {}
-        f:labels:
-          .: {}
-          f:workflows.argoproj.io/creator: {}
-      f:spec: {}
-    manager: argo
-    operation: Update
-    time: "2024-07-11T09:14:39Z"
   name: input-artifact-git
   namespace: argo
-  resourceVersion: "1003834"
-  uid: a35bb380-a016-4bc6-8a4b-f6622e20f1cd
 spec:
   arguments: {}
   entrypoint: git-clone
