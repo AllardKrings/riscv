@@ -28,16 +28,19 @@ spec:
           passwordSecret:
             key: password
             name: gitea-creds
-          repo: https://gitea-riscv.alldcs.nl/allard/olproperties.git
+#add your git-repo in the line below:
+          repo: https://<git-repo to clone from>
           usernameSecret:
             key: username
-            name: gitea-creds
+#create a secret containing your git username and pasword and replace the name below:
+            name: <git-secret>
         name: argo-source
         path: /src
     metadata: {}
     name: git-clone
     outputs: {}
   volumes:
+# we mount the docker.sock from the host to build and push the image:
   - hostPath:
       path: /var/run/docker.sock
     name: dockersock
