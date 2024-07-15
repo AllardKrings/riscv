@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  creationTimestamp: "2024-07-09T12:28:11Z"
+  generateName: input-artifact-git-
+  generation: 10
+  labels:
+    workflows.argoproj.io/creator: system-serviceaccount-argo-argo-server
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:workflows.argoproj.io/creator: {}
+      f:spec: {}
+    manager: argo
+    operation: Update
+    time: "2024-07-11T09:14:39Z"
+  name: input-artifact-git
+  namespace: argo
+  resourceVersion: "1003834"
+  uid: a35bb380-a016-4bc6-8a4b-f6622e20f1cd
+spec:
+  arguments: {}
+  entrypoint: git-clone
+  templates:
+  - container:
+      args:
+      - git status && ls && mvn clean install
+      command:
+      - sh
+      - -c
+      image: allardkrings/riscv64-maven
+      name: ""
+      resources: {}
+      volumeMounts:
+      - mountPath: /var/run/docker.sock
+        name: dockersock
+      workingDir: /src
+    inputs:
+      artifacts:
+      - git:
+          passwordSecret:
+            key: password
+            name: gitea-creds
+          repo: https://gitea-riscv.alldcs.nl/allard/olproperties.git
+          usernameSecret:
+            key: username
+            name: gitea-creds
+        name: argo-source
+        path: /src
+    metadata: {}
+    name: git-clone
+    outputs: {}
+  volumes:
+  - hostPath:
+      path: /var/run/docker.sock
+    name: dockersock
