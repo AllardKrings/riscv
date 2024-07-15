@@ -25,15 +25,15 @@ spec:
     inputs:
       artifacts:
       - git:
-          passwordSecret:
-            key: password
-            name: gitea-creds
-#add your git-repo in the line below:
-          repo: https://<git-repo to clone from>
+#create a secret containing your git username and pasword and replace the name below:
           usernameSecret:
             key: username
-#create a secret containing your git username and pasword and replace the name below:
             name: <git-secret>
+          passwordSecret:
+            key: password
+            name: <git-secret>
+#add your git-repo in the line below:
+          repo: https://<git-repo to clone from>
         name: argo-source
         path: /src
     metadata: {}
