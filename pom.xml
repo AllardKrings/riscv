@@ -139,9 +139,9 @@
                     <arguments>
                       <argument>login</argument>
                       <argument>-u</argument>
-                      <argument>allardkrings</argument>
+                      <argument>$(docker-user)</argument>
                       <argument>-p</argument>
-                      <argument>Kubernetes01@</argument>
+                      <argument>$docker-password)</argument>
                       <argument>docker.io</argument>
                     </arguments>
                   </configuration>
