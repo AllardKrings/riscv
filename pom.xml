@@ -141,7 +141,7 @@
                       <argument>-u</argument>
                       <argument>$(docker-user)</argument>
                       <argument>-p</argument>
-                      <argument>$docker-password)</argument>
+                      <argument>$(docker-password)</argument>
                       <argument>docker.io</argument>
                     </arguments>
                   </configuration>
